@@ -32,9 +32,6 @@ class _ConfigEditorScreenState extends State<ConfigEditorScreen> {
   /// 当前文件的可变配置数据。
   Map<String, dynamic> _configData = {};
 
-  /// 当前文件的原始文本（文本编辑模式使用）。
-  String _rawText = '';
-
   /// 是否处于文本编辑模式。
   bool _textMode = false;
 
@@ -75,7 +72,6 @@ class _ConfigEditorScreenState extends State<ConfigEditorScreen> {
     } else {
       setState(() {
         _configData = {};
-        _rawText = '';
       });
     }
   }
@@ -90,7 +86,6 @@ class _ConfigEditorScreenState extends State<ConfigEditorScreen> {
       setState(() {
         _selectedIndex = index;
         _configData = data;
-        _rawText = raw;
         _textController.text = raw;
         _textMode = false;
         _dirty = false;
@@ -101,7 +96,6 @@ class _ConfigEditorScreenState extends State<ConfigEditorScreen> {
       setState(() {
         _selectedIndex = index;
         _configData = {};
-        _rawText = raw;
         _textController.text = raw;
         _textMode = true;
         _dirty = false;
