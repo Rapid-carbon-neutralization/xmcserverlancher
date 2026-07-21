@@ -135,7 +135,7 @@ class _ConfigEditorScreenState extends State<ConfigEditorScreen> {
 
   /// 标记数据已修改。
   void _markDirty() {
-    if (!_dirty) setState(() => _dirty = true);
+    setState(() => _dirty = true);
   }
 
   /// 切换文件时的未保存提示。
@@ -426,7 +426,8 @@ class _ConfigEditorScreenState extends State<ConfigEditorScreen> {
           fieldKey: entry.key,
           value: entry.value,
           onChanged: (newValue) {
-            _configData[entry.key] = newValue;
+            _configData = Map<String, dynamic>.from(_configData)
+              ..[entry.key] = newValue;
             _markDirty();
           },
         );
@@ -665,7 +666,7 @@ class _ConfigFieldState extends State<_ConfigField> {
               ),
               Switch(
                 value: value,
-                onChanged: widget.onChanged,
+                onChanged: (v) => widget.onChanged(v),
               ),
             ],
           ),

@@ -86,6 +86,7 @@ class _InstanceCard extends StatelessWidget {
     return Card(
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.85),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(16),

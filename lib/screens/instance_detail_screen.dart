@@ -234,7 +234,8 @@ class _InstanceDetailScreenState extends State<InstanceDetailScreen> {
       children: [
         Expanded(
           child: Container(
-            color: Colors.black.withValues(alpha: 0.3),
+            // 半透明背景，符合 Apple 材质设计
+            color: Colors.black.withValues(alpha: 0.4),
             child: ListView.builder(
               controller: _scrollController,
               padding: const EdgeInsets.all(8),
@@ -245,7 +246,7 @@ class _InstanceDetailScreenState extends State<InstanceDetailScreen> {
                   style: TextStyle(
                     fontFamily: 'monospace',
                     fontSize: 13,
-                    color: theme.colorScheme.onSurface,
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.9),
                   ),
                 );
               },
@@ -260,10 +261,13 @@ class _InstanceDetailScreenState extends State<InstanceDetailScreen> {
                 child: TextField(
                   controller: _commandController,
                   focusNode: _focusNode,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     hintText: '输入服务器指令（无需 /）后按回车',
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                     isDense: true,
+                    // 半透明背景
+                    fillColor: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
+                    filled: true,
                   ),
                   onSubmitted: (_) => _sendCommand(),
                 ),
